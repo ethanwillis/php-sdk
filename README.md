@@ -139,10 +139,16 @@ echo $transloadit->createAssemblyForm(array(
   ),
 ));
 ?>
-<h1>Pick an image to resize</h1>
-<input name="example_upload" type="file">
-<input type="submit" value="Upload">
-</form>
+<html>
+  <head></head>
+  <body>
+    <h1>Pick an image to resize</h1>
+    <form>
+      <input name="example_upload" type="file">
+      <button type="submit" value="Upload">
+    </form>
+  </body>
+</html>
 
 ```
 
@@ -194,23 +200,27 @@ echo $transloadit->createAssemblyForm(array(
   Including the jQuery plugin is as simple as adding jQuery and including the
   JS snippet for the plugin. See https://transloadit.com/docs/#jquery-sdk
 -->
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript">
-  var tlProtocol = (('https:' === document.location.protocol) ? 'https://' : 'http://');
-  document.write(unescape("%3Cscript src='" + tlProtocol + "assets.transloadit.com/js/jquery.transloadit2.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    // Tell the transloadit plugin to bind itself to our form
-    $('form').transloadit();
-  });
-</script>
-<!-- Nothing changed below here -->
-<h1>Pick an image to resize</h1>
-<form>
-  <input name="example_upload" type="file">
-  <input type="submit" value="Upload">
-</form>
+<html>
+  <head></head>
+  <body>
+    <h1>Pick an image to resize</h1>
+    <form>
+      <input name="example_upload" type="file">
+      <button type="submit" value="Upload">
+    </form>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      var tlProtocol = (('https:' === document.location.protocol) ? 'https://' : 'http://');
+      document.write(unescape("%3Cscript src='" + tlProtocol + "assets.transloadit.com/js/jquery.transloadit2.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        // Tell the transloadit plugin to bind itself to our form
+        $('form').transloadit();
+      });
+    </script>
+  </body>
+</html>
 ```
 
 Alternatively, check our [Uppy](https://transloadit.com/docs/#uppy), our next-gen file uploader for the web.
@@ -487,7 +497,7 @@ For more information on SemVer, please visit http://semver.org/.
 ## Releasing a new version
 
 ```bash
-# 1. update CHANGELOG.md 
+# 1. update CHANGELOG.md
 # 2. update composer.json
 # 3. commit all your work
 source env.sh && VERSION=3.0.4 ./release.sh
